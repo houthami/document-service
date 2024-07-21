@@ -1,5 +1,4 @@
 package org.dms.document.controller;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.dms.document.dto.VideoDto;
 import org.dms.document.service.VideoService;
@@ -32,9 +31,9 @@ public class VideoController {
         return "videos";
     }
 
-    @GetMapping("/stream/{id}")
+    /*@GetMapping("/stream/{id}")
     public void streamVideo(@PathVariable String id, HttpServletResponse response) throws Exception {
         VideoDto video = videoService.getVideo(id);
         FileCopyUtils.copy(video.getStream(), response.getOutputStream());
-    }
+    }*/
 }
