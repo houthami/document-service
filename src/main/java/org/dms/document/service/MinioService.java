@@ -76,16 +76,19 @@ public class MinioService {
                     .contentType(MediaType.valueOf(Objects.requireNonNull(file.headers().get("Content-Type"))))
                     .body(new InputStreamResource(file));
         } catch (MinioException | IOException e) {
-            log.error("Error Call MinioService.getFile", e);
+            log.error("Error Call MinioService.getFile"+ e.getMessage());
             // Handle MinioException and IOException appropriately
             return ResponseEntity
                     .status(500)
                     .body(null);
         } catch (NoSuchAlgorithmException e) {
-            log.error("Error Call MinioService.getFile", e);
+            log.error("Error Call MinioService.getFile"+ e.getMessage());
             throw new RuntimeException(e);
         } catch (InvalidKeyException e) {
-            log.error("Error Call MinioService.getFile", e);
+            log.error("Error Call MinioService.getFile"+ e.getMessage());
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            log.error("Error Call MinioService.getFile"+ e.getMessage());
             throw new RuntimeException(e);
         }
     }
